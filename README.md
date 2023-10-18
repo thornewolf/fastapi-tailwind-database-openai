@@ -1,4 +1,6 @@
-# Personal Dictionary
+# Generic App
+
+<img width="1099" alt="image" src="https://github.com/thornewolf/template-oct-2023/assets/16554266/b55e4c6f-6277-4207-8840-6ffb4950e794">
 
 ## Setup
 
@@ -59,4 +61,3 @@ poetry run python -m unittest
 ### Educational Resources
 
 For providing CLI arguments to alembic: https://gist.github.com/twolfson/4bc5813b022178bd7034
-# template-oct-2023
