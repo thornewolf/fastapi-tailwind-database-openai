@@ -1,0 +1,12 @@
+{
+  "printWidth": 300,
+  "overrides": [
+    {
+      "files": "**/*.jinja",
+      "options": {
+        "parser": "jinja-template"
+      }
+    }
+  ],
+  "plugins": ["prettier-plugin-jinja-template", "prettier-plugin-tailwindcss"]
+}

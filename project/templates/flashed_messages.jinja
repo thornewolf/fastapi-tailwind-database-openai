@@ -1,0 +1,11 @@
+{% with messages = get_flashed_messages(request) %}
+  {% if messages %}
+    <div>
+      {% for message in messages %}
+        <div>
+          <h1>{{ message.message }}</h1>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}

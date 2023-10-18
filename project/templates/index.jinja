@@ -1,0 +1,82 @@
+{% extends 'base.jinja' %}
+{% block body %}
+  <section class="bg-gray-100">
+    <div class="mx-auto mb-12 max-w-7xl items-center px-8 md:px-12 lg:px-16">
+      <div class="mx-auto max-w-xl text-center lg:p-10">
+        <div>
+          <p class="mt-8 font-medium text-black text-5xl tracking-tighter">Product introduction sentence. Catchy and concise.</p>
+          <p class="mx-auto mt-4 max-w-xl text-gray-600 text-lg tracking-tight">Expansion on the introduction. Clearly state what the product does.</p>
+        </div>
+        <div class="mt-10 flex flex-col items-center justify-center gap-3 pb-8 lg:flex-row">
+          <a
+            href="/login"
+            class="inline-flex w-full items-center justify-center rounded-full  border-2 border-black bg-black px-6 py-2.5 text-center text-white duration-200 text-sm hover:border-black hover:bg-transparent hover:text-black focus:outline-none focus-visible:outline-black focus-visible:ring-black lg:w-auto"
+          >
+            Get Started
+          </a>
+          <a href="/demo" class="inline-flex items-center justify-center font-semibold text-black duration-200 text-sm hover:text-blue-500 focus:outline-none focus-visible:outline-gray-600"> Learn more &nbsp; → </a>
+        </div>
+      </div>
+      <div class="relative mx-auto hidden w-full max-w-7xl items-center px-5 md:px-12 lg:block lg:px-16">
+        <img class="w-full bg-gray-300" src="{{ url_for('static', path='images/art.png') }}" alt="" />
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-8">
+    <div class="relative mx-auto w-full max-w-7xl items-center px-5 md:px-12 lg:px-16 ">
+      <div>
+        <div class="max-w-2xl">
+          <p class="font-medium text-black text-2xl tracking-tight sm:text-4xl">How it works</p>
+          <p class="mt-4 max-w-2xl text-gray-600 text-lg tracking-tight">
+            This section should follow a pretty standard format. 1. Introduce a problem to the reader. 2. Communicate how no one has solved this problem yet because of X,Y,Z. 3. State that this website solves the problem. Close out with a casual call to action.
+          </p>
+        </div>
+      </div>
+      <div class="">
+        <div class="mx-auto max-w-xl py-12 text-left lg:max-w-7xl">
+          <h2 class="sr-only">Features.</h2>
+          <div>
+            <div class="grid grid-cols-2 gap-12 lg:grid-cols-3 lg:space-y-0">
+              {% for _ in  range(6) %}
+                <div>
+                  <div>
+                    <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-gray-100 text-black">❖</div>
+                    <p class="mt-4 font-medium leading-6 text-black text-lg">Feature</p>
+                  </div>
+                  <div class="mt-4 text-gray-500 text-base">Feature explaination. Expand this to a sentence or two.</div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-gray-100">
+    <div class="relative mx-auto w-full max-w-7xl items-center px-5 py-12 md:px-12 lg:px-16">
+      <div class="mx-auto flex w-full">
+        <div class="relative m-auto inline-flex items-center align-middle">
+          <div class="relative max-w-6xl overflow-hidden rounded-3xl bg-white p-10 lg:p-20">
+            <div class="relative max-w-lg">
+              <div>
+                <p class="font-medium text-black text-2xl tracking-tight sm:text-4xl">Final call to action.</p>
+                <p class="mt-4 max-w-xl text-gray-600 text-base tracking-tight">Use this paragraph to share information about your company or products. Make it engaging and interesting, and showcase your brand's personality. Thanks for visiting our website!</p>
+              </div>
+              <div class="mt-10 flex flex-col items-center justify-center gap-3 lg:flex-row lg:justify-start">
+                <a
+                  href="/login"
+                  class="inline-flex w-full items-center justify-center rounded-full  border-2 border-black bg-black px-6 py-2.5 text-center text-white duration-200 text-sm hover:border-black hover:bg-transparent hover:text-black focus:outline-none focus-visible:outline-black focus-visible:ring-black lg:w-auto"
+                >
+                  Get Started
+                </a>
+                <a href="/demo" class="inline-flex items-center justify-center font-semibold text-black duration-200 text-sm hover:text-blue-500 focus:outline-none focus-visible:outline-gray-600"> Learn more &nbsp; → </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
