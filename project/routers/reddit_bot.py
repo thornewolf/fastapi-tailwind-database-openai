@@ -1,4 +1,5 @@
 import praw
+import random
 import time
 import os
 from project.llm import llm
@@ -68,15 +69,15 @@ ____
                 # Mark the post as saved (or processed)
                 post.save()
                 print('Replied to post')
-                await asyncio.sleep(30)
+                await asyncio.sleep(random.randint(25, 35))
 
 async def respond_to_posts_forever():
     # Fetch the newest posts
     while True:
-        await do_subreddit('whatisthatmovie', filter=False)
-        await do_subreddit('tipofmytongue', limit=4)
-        await do_subreddit('whatsthemoviecalled', limit=5, filter=False)
-        await asyncio.sleep(300)
+        await do_subreddit('whatisthatmovie', filter=False, limit=10)
+        await do_subreddit('tipofmytongue', limit=10)
+        await do_subreddit('whatsthemoviecalled', limit=10, filter=False)
+        await asyncio.sleep(1200)
 
 async def get_my_past_10_comments_then_delete_negative_scored():
     while True:
