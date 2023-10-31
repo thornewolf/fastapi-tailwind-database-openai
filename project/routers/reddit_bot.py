@@ -75,7 +75,7 @@ async def respond_to_posts_forever():
     # Fetch the newest posts
     while True:
         await do_subreddit('whatisthatmovie', filter=False, limit=10)
-        await do_subreddit('tipofmytongue', limit=10)
+        #await do_subreddit('tipofmytongue', limit=10)
         await do_subreddit('whatsthemoviecalled', limit=10, filter=False)
         await asyncio.sleep(1200)
 
