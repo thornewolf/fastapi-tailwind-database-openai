@@ -2,16 +2,18 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+import openai
 from absl import logging
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 
 import project.middleware as middleware
-from project.routers import api
 import project.routers.app as frontend
-from project.routers import auth
+from project.routers import api, auth
+import os
 
+openai.api_key = os.getenv("OPENAI_API_KEY")
 logging.set_verbosity(logging.INFO)
 
 app = FastAPI()

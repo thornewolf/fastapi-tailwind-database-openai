@@ -37,26 +37,27 @@ def llm_response(messages: list[dict]) -> LlmResponse:
     return LlmResponse(**gpt_response(messages))
 
 
-def llm(message: str, system: str = None):
-    if system is None:
-        return llm_response(
-            [
-                {
-                    "role": "user",
-                    "content": message,
-                }
-            ]
-        ).content
-
-    return llm_response(
-        [
+def llm(message: str, system: str = None, examples: list[str] = None):
+    messages = []
+    if examples is None:
+        examples = []
+    if system:
+        messages.append(
             {
                 "role": "system",
                 "content": system,
-            },
+            }
+        )
+    messages.append( { "role": "user", "content": message})
+    roles = ["user", "assistant"]
+    for i,e in enumerate(examples):
+        messages.append(
             {
-                "role": "user",
-                "content": message,
-            },
-        ]
+                "role": roles[i%2],
+                "content": e,
+            }
+        )
+    print(messages)
+    return llm_response(
+        messages
     ).content

@@ -4,22 +4,11 @@
     <div class="mx-auto mb-12 max-w-7xl items-center px-8 md:px-12 lg:px-16">
       <div class="mx-auto max-w-xl text-center lg:p-10">
         <div>
-          <p class="mt-8 font-medium text-black text-5xl tracking-tighter">Product introduction sentence. Catchy and concise.</p>
-          <p class="mx-auto mt-4 max-w-xl text-gray-600 text-lg tracking-tight">Expansion on the introduction. Clearly state what the product does.</p>
-        </div>
-        <div class="mt-10 flex flex-col items-center justify-center gap-3 pb-8 lg:flex-row">
-          <a
-            href="/login"
-            class="inline-flex w-full items-center justify-center rounded-full  border-2 border-black bg-black px-6 py-2.5 text-center text-white duration-200 text-sm hover:border-black hover:bg-transparent hover:text-black focus:outline-none focus-visible:outline-black focus-visible:ring-black lg:w-auto"
-          >
-            Get Started
-          </a>
-          <a href="/demo" class="inline-flex items-center justify-center font-semibold text-black duration-200 text-sm hover:text-blue-500 focus:outline-none focus-visible:outline-gray-600"> Learn more &nbsp; → </a>
+          <p class="mt-8 font-medium text-black text-5xl tracking-tighter">forgotmoviesearch.com</p>
+          <p class="mx-auto mt-4 max-w-xl text-gray-600 text-lg tracking-tight">Find what movie you are thinking about from a brief description</p>
         </div>
       </div>
-      <div class="relative mx-auto hidden w-full max-w-7xl items-center px-5 md:px-12 lg:block lg:px-16">
-        <img class="w-full bg-gray-300" src="{{ url_for('static', path='images/art.png') }}" alt="" />
-      </div>
+      <div class="relative mx-auto w-full max-w-7xl items-center px-5 md:px-12 lg:block lg:px-16">{{ render_partial('components/movie-search.jinja') }}</div>
     </div>
   </section>
 
@@ -29,7 +18,8 @@
         <div class="max-w-2xl">
           <p class="font-medium text-black text-2xl tracking-tight sm:text-4xl">How it works</p>
           <p class="mt-4 max-w-2xl text-gray-600 text-lg tracking-tight">
-            This section should follow a pretty standard format. 1. Introduce a problem to the reader. 2. Communicate how no one has solved this problem yet because of X,Y,Z. 3. State that this website solves the problem. Close out with a casual call to action.
+            Have you ever found yourself struggling to remember the name of a movie you once watched? Maybe you recall a fragment of a scene, a snippet of dialogue, or the vibe of the movie, but the title remains frustratingly out of reach. In an age where AI transforms our daily lives, a new hero
+            emerges in the realm of cinema: forgotmoviesearch.com. This innovative website promises to end our collective struggles by using cutting-edge AI to identify movies based on our vague, often fragmentary descriptions.
           </p>
         </div>
       </div>
@@ -38,15 +28,59 @@
           <h2 class="sr-only">Features.</h2>
           <div>
             <div class="grid grid-cols-2 gap-12 lg:grid-cols-3 lg:space-y-0">
-              {% for _ in  range(6) %}
+              <!-- Feature 1 -->
+              <div>
                 <div>
-                  <div>
-                    <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-gray-100 text-black">❖</div>
-                    <p class="mt-4 font-medium leading-6 text-black text-lg">Feature</p>
-                  </div>
-                  <div class="mt-4 text-gray-500 text-base">Feature explaination. Expand this to a sentence or two.</div>
+                  <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-gray-100 text-black">🔍</div>
+                  <p class="mt-4 font-medium leading-6 text-black text-lg">Advanced Search</p>
                 </div>
-              {% endfor %}
+                <div class="mt-4 text-gray-500 text-base">Utilize our advanced search feature to easily find movies based on even the most minimal details.</div>
+              </div>
+
+              <!-- Feature 2 -->
+              <div>
+                <div>
+                  <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-gray-100 text-black">⚙️</div>
+                  <p class="mt-4 font-medium leading-6 text-black text-lg">Custom Filters</p>
+                </div>
+                <div class="mt-4 text-gray-500 text-base">Filter search results by genre, year, director, or actor to narrow down your findings.</div>
+              </div>
+
+              <!-- Feature 3 -->
+              <div>
+                <div>
+                  <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-gray-100 text-black">💬</div>
+                  <p class="mt-4 font-medium leading-6 text-black text-lg">Community Discussions</p>
+                </div>
+                <div class="mt-4 text-gray-500 text-base">Join community discussions to explore insights and viewpoints from fellow movie enthusiasts.</div>
+              </div>
+
+              <!-- Feature 4 -->
+              <div>
+                <div>
+                  <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-gray-100 text-black">🎥</div>
+                  <p class="mt-4 font-medium leading-6 text-black text-lg">AI-Powered Recommendations</p>
+                </div>
+                <div class="mt-4 text-gray-500 text-base">Our AI analyzes your search and viewing patterns to recommend movies tailored to your taste.</div>
+              </div>
+
+              <!-- Feature 5 -->
+              <div>
+                <div>
+                  <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-gray-100 text-black">🌟</div>
+                  <p class="mt-4 font-medium leading-6 text-black text-lg">Top Rated Lists</p>
+                </div>
+                <div class="mt-4 text-gray-500 text-base">Browse through curated lists of top-rated movies across various genres and eras.</div>
+              </div>
+
+              <!-- Feature 6 -->
+              <div>
+                <div>
+                  <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-gray-100 text-black">📚</div>
+                  <p class="mt-4 font-medium leading-6 text-black text-lg">Extensive Knowledge</p>
+                </div>
+                <div class="mt-4 text-gray-500 text-base">Access an extensive list of films, including rare and indie titles, to discover hidden gems.</div>
+              </div>
             </div>
           </div>
         </div>
@@ -54,7 +88,7 @@
     </div>
   </section>
 
-  <section class="bg-gray-100">
+  {# <section class="bg-gray-100">
     <div class="relative mx-auto w-full max-w-7xl items-center px-5 py-12 md:px-12 lg:px-16">
       <div class="mx-auto flex w-full">
         <div class="relative m-auto inline-flex items-center align-middle">
@@ -71,12 +105,12 @@
                 >
                   Get Started
                 </a>
-                <a href="/demo" class="inline-flex items-center justify-center font-semibold text-black duration-200 text-sm hover:text-blue-500 focus:outline-none focus-visible:outline-gray-600"> Learn more &nbsp; → </a>
+                <a href="/blog/about-us" class="inline-flex items-center justify-center font-semibold text-black duration-200 text-sm hover:text-blue-500 focus:outline-none focus-visible:outline-gray-600"> Learn more &nbsp; → </a>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </section> #}
 {% endblock %}

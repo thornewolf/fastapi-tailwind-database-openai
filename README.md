@@ -1,8 +1,21 @@
-# Generic App
+# Forgot movie tool
 
 <img width="1099" alt="image" src="https://github.com/thornewolf/template-oct-2023/assets/16554266/b55e4c6f-6277-4207-8840-6ffb4950e794">
 
 ## Setup
+
+### Prerequisites
+
+- https://github.com/casey/just
+- https://python-poetry.org/
+- https://www.npmjs.com/
+
+### Setup
+
+```bash
+poetry install
+npm i
+```
 
 Env variables:
 
@@ -15,6 +28,11 @@ AUTH0_CLIENT_SECRET=...
 DATABASE_URL=...
 DATABASE_URL_PROD=...
 OPENAI_API_KEY=...
+REDDIT_USERNAME=...
+REDDIT_PASSWORD=...
+REDDIT_CLIENT_ID=...
+REDDIT_CLIENT_SECRET=...
+ENV=dev
 ```
 
 ## Database Management
@@ -29,10 +47,11 @@ just upgrade $env
 just upgrade-all
 ```
 
-## Launching the server
+## Launching the server and css env (needs two terminals)
 
 ```bash
-just run
+just css
+just post && just run
 ```
 
 ## Going to Production
