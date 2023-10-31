@@ -57,7 +57,7 @@ ____
 ^(I made forgotmoviesearch.com for questions like this. I put this post into the movie search: )^[here]({search_link}).
                 
 ^(mods lmk if you have any opinions on this. its somewhere between normal answer and ai generated.)'''
-                response = '''"{movie_name}"?"'''
+                response = f'''"{movie_name}"?"'''
 
                 # response = llm(response, system="Minorly reword the provided comment for reddit. Don't change it too much though. Only change a word or two.")
 
@@ -69,7 +69,7 @@ ____
                 # Mark the post as saved (or processed)
                 post.save()
                 print('Replied to post')
-                await asyncio.sleep(random.randint(25, 35))
+                await asyncio.sleep(random.randint(25, 35)*2*120)
 
 async def respond_to_posts_forever():
     # Fetch the newest posts
