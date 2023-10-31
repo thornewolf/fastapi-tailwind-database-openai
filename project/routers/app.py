@@ -6,10 +6,11 @@ from fastapi.responses import (FileResponse, HTMLResponse, RedirectResponse, JSO
                                Response)
 
 import project.common as common
+from project.routers.movie import get_movie
 from project.common import templates
 from project.llm import llm
 from project.routers import blog
-from project.routers.reddit_bot import respond_to_posts_forever
+from project.routers.reddit_bot import respond_to_posts_forever, get_my_past_10_comments_then_delete_negative_scored
 
 router = APIRouter()
 router.include_router(blog.router)
@@ -34,17 +35,6 @@ def get_favicon():
 async def demo(request: Request):
     return templates.TemplateResponse("demo.jinja", {"request": request})
 
-@common.time_cache(3)
-def get_movie(description: str):
-    tries = 0
-    response = 'BAD'*200
-    while len(response) > 100:
-        response = llm(f'''{description}''', system=f'''You are an AI that helps people find the movie they are looking for. They will provide you with a description of the movie and you will provide them with the title of the movie. User descriptions may be vague so always make a best effort guess. It's more important in this context to always return some guess than to tell the user they were vague. Limit all responses to just the movie name. If you provide any more content your response will be rejected.''', examples=[])
-        tries += 1
-        if tries > 2:
-            return "Search failed. Please try again."
-    return response
-
 
 @router.get('/search')
 async def search(request: Request, description: str = None, raw=False):
@@ -58,5 +48,5 @@ async def search(request: Request, description: str = None, raw=False):
 
 @router.on_event("startup")
 async def startup():
-    # asyncio.create_task(lambda: common.write_notification("App started"))
     asyncio.create_task(respond_to_posts_forever())
+    asyncio.create_task(get_my_past_10_comments_then_delete_negative_scored())
