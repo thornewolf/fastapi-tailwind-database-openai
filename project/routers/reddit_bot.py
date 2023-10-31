@@ -47,14 +47,9 @@ async def do_subreddit(name, filter=True, limit=3):
                       continue
             if not post.saved:  # check if the bot hasn't already replied to this post
                 search_link = create_search_link(post.title, post.selftext)
-                response = f'''Hi, I'm the developer of forgotmoviesearch.com. Given the nature of this subreddit, I thought my site could be particularly useful here. Check it out and let me know if it helps!
+                response = f'''I made forgotmoviesearch.com for questions like this. I put this post into it: [here]({search_link}). You can click search a bunch of times to generate multiple candidates. lmk if its useful.'''
 
-[link]({search_link})
-
-Mods, please advise if you'd prefer I include the suggested movie title directly in my comments.
-    '''
-
-                response = llm(response, system="Minorly reword the provided comment for reddit. Don't change it too much though. Only change a word or two.")
+                # response = llm(response, system="Minorly reword the provided comment for reddit. Don't change it too much though. Only change a word or two.")
 
                 common.write_notification(f"Responding to post: {post.title} with {response}")
                 
