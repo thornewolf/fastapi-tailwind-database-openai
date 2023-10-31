@@ -43,7 +43,7 @@ async def do_subreddit(name, filter=True, limit=3):
         print('Fetching new posts')
         for post in subreddit.new(limit=limit):
             if filter:
-                 if 'movie' not in post.title.lower():
+                 if '[movie]' not in post.title.lower():
                       continue
             if not post.saved:  # check if the bot hasn't already replied to this post
                 search_link = create_search_link(post.title, post.selftext)
