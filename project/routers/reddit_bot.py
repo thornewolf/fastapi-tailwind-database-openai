@@ -56,6 +56,7 @@ ____
 ^(I made forgotmoviesearch.com for questions like this. I put this post into the movie search: )^[here]({search_link}).
                 
 ^(mods lmk if you have any opinions on this. its somewhere between normal answer and ai generated.)'''
+                response = '''"{movie_name}"?"'''
 
                 # response = llm(response, system="Minorly reword the provided comment for reddit. Don't change it too much though. Only change a word or two.")
 
