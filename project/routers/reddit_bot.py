@@ -49,13 +49,13 @@ async def do_subreddit(name, filter=True, limit=3):
                       continue
             if not post.saved:  # check if the bot hasn't already replied to this post
                 search_link = create_search_link(post.title, post.selftext)
-                movie_name = get_movie(post.title + " " + post.selftext, llm=llm)
+                movie_name = get_movie(post.title + " " + post.selftext, llm=llm).replace('"', '')
                 response = f'''"{movie_name}"?
                 
 ____
-^^(I made forgotmoviesearch.com for questions like this. I put this post into the movie search: )^[here]({search_link}).
+^(I made forgotmoviesearch.com for questions like this. I put this post into the movie search: )^[here]({search_link}).
                 
-^^(mods lmk if you have any opinions on this. its somewhere between normal answer and ai generated.)'''
+^(mods lmk if you have any opinions on this. its somewhere between normal answer and ai generated.)'''
 
                 # response = llm(response, system="Minorly reword the provided comment for reddit. Don't change it too much though. Only change a word or two.")
 
@@ -73,7 +73,8 @@ async def respond_to_posts_forever():
     # Fetch the newest posts
     while True:
         await do_subreddit('whatisthatmovie', filter=False)
-        await do_subreddit('tipofmytongue', limit=3)
+        await do_subreddit('tipofmytongue', limit=4)
+        await do_subreddit('whatsthemoviecalled', limit=5, filter=False)
         await asyncio.sleep(300)
 
 async def get_my_past_10_comments_then_delete_negative_scored():
