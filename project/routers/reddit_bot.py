@@ -14,7 +14,7 @@ reddit = praw.Reddit(
     username=os.environ.get("REDDIT_USERNAME")
 )
 
-if os.environ.get('ENV') == 'asnd':
+if os.environ.get('ENV') == 'dev':
     from unittest import mock
     reddit = mock.MagicMock()
     reddit.subreddit = mock.MagicMock()
