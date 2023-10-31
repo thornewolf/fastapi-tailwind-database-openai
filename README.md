@@ -1,6 +1,6 @@
 # Forgot movie tool
 
-<img width="1099" alt="image" src="https://github.com/thornewolf/template-oct-2023/assets/16554266/b55e4c6f-6277-4207-8840-6ffb4950e794">
+<img width="1099" alt="image" src="https://github.com/thornewolf/whats-that-movie/assets/16554266/866cab0f-47e0-480b-820f-fbb3b196e170">
 
 ## Setup
 
