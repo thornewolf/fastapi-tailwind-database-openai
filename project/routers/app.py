@@ -50,7 +50,7 @@ def get_movie(description: str):
 async def search(request: Request, description: str = None):
     movie_name = get_movie(description)
     print(movie_name)
-    amazon_link = f'https://www.amazon.com/s?k={movie_name + "movie"}&ref=nb_sb_noss_2'
+    amazon_link = f'https://www.amazon.com/s?k={movie_name + " movie"}&ref=nb_sb_noss_2'
     return templates.TemplateResponse("search.jinja", {"request": request, "description": description, "response": movie_name, "movie_link": amazon_link})
 
 
