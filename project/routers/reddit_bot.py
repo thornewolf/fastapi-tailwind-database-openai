@@ -14,7 +14,7 @@ reddit = praw.Reddit(
     username=os.environ.get("REDDIT_USERNAME")
 )
 
-if os.environ.get('ENV') == 'env':
+if os.environ.get('ENV') == 'asnd':
     from unittest import mock
     reddit = mock.MagicMock()
     reddit.subreddit = mock.MagicMock()
@@ -38,13 +38,13 @@ def create_search_link(title, body):
     base_url = "https://forgotmoviesearch.com/search?"
     return base_url + encoded_description
 
-async def respond_to_posts_forever():
-    subreddit = reddit.subreddit('whatisthatmovie')
-
-    # Fetch the newest posts
-    while True:
+async def do_subreddit(name, filter=True, limit=3):
+        subreddit = reddit.subreddit(name)
         print('Fetching new posts')
-        for post in subreddit.new(limit=3):
+        for post in subreddit.new(limit=limit):
+            if filter:
+                 if 'movie' not in post.title.lower():
+                      continue
             if not post.saved:  # check if the bot hasn't already replied to this post
                 search_link = create_search_link(post.title, post.selftext)
                 response = f'''Hi, I'm the developer of forgotmoviesearch.com. Given the nature of this subreddit, I thought my site could be particularly useful here. Check it out and let me know if it helps!
@@ -64,6 +64,12 @@ Mods, please advise if you'd prefer I include the suggested movie title directly
                 # Mark the post as saved (or processed)
                 post.save()
                 asyncio.sleep(30)
+
+async def respond_to_posts_forever():
+    # Fetch the newest posts
+    while True:
+        await do_subreddit('whatisthatmovie', filter=False)
+        await do_subreddit('tipofmytongue', limit=3)
         await asyncio.sleep(1200)
 
 if __name__ == "__main__":

@@ -11,6 +11,7 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 
 class LlmModel(str, Enum):
     GPT_3_5_TURBO = "gpt-3.5-turbo"
+    GPT_4 = 'gpt-4'
 
 
 class FunctionCallStructure(BaseModel):
@@ -26,7 +27,7 @@ class LlmResponse(BaseModel):
 
 def gpt_response(messages: list[dict]) -> tuple[dict, dict]:
     full_response: dict = openai.ChatCompletion.create(
-        model=LlmModel.GPT_3_5_TURBO,
+        model=LlmModel.GPT_4,
         messages=messages,
     )
     message: dict = json.loads(json.dumps(full_response["choices"][0]["message"]))  # type: ignore
