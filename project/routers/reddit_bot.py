@@ -47,7 +47,9 @@ async def do_subreddit(name, filter=True, limit=3):
                       continue
             if not post.saved:  # check if the bot hasn't already replied to this post
                 search_link = create_search_link(post.title, post.selftext)
-                response = f'''I made forgotmoviesearch.com for questions like this. I put this post into it: [here]({search_link}). You can click search a bunch of times to generate multiple candidates. lmk if its useful.'''
+                response = f'''I made forgotmoviesearch.com for questions like this. I put this post into it: [here]({search_link}). You can click search a bunch of times to generate multiple candidates. lmk if its useful.
+                
+mods lmk if you have any opinions on this. its somewhere between normal answer and ai generated.'''
 
                 # response = llm(response, system="Minorly reword the provided comment for reddit. Don't change it too much though. Only change a word or two.")
 
@@ -58,14 +60,14 @@ async def do_subreddit(name, filter=True, limit=3):
                 
                 # Mark the post as saved (or processed)
                 post.save()
-                asyncio.sleep(30)
+                await asyncio.sleep(30)
 
 async def respond_to_posts_forever():
     # Fetch the newest posts
     while True:
         await do_subreddit('whatisthatmovie', filter=False)
         await do_subreddit('tipofmytongue', limit=3)
-        await asyncio.sleep(1200)
+        await asyncio.sleep(7200)
 
 if __name__ == "__main__":
     respond_to_posts_forever()
