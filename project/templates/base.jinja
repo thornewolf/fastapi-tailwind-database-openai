@@ -18,20 +18,20 @@
     <meta name="twitter:description" content="{% block description %}{% endblock %}" />
     <meta name="twitter:image" content="{{ url_for('static', path=embed_image_path if embed_image_path else 'embed.png') }}" />
 
-    {{ render_partial('js_plugins.jinja', request=request) }}
-    {{ render_partial('tracking_scripts.jinja', request=request) }}
+    {{ render_partial('core/js_plugins.jinja', request=request) }}
+    {{ render_partial('core/tracking_scripts.jinja', request=request) }}
 
     {% block header %}
     {% endblock %}
   </head>
 
   <body class="flex min-h-screen flex-col">
-    {{ render_partial('navbar.jinja', request=request) }}
+    {{ render_partial('core/navbar.jinja', request=request) }}
     <main class="bg-gray-100">
-      {{ render_partial('flashed_messages.jinja', request=request) }}
+      {{ render_partial('core/flashed_messages.jinja', request=request) }}
       {% block body %}
       {% endblock body %}
     </main>
-    {{ render_partial('footer.jinja', request=request) }}
+    {{ render_partial('core/footer.jinja', request=request) }}
   </body>
 </html>

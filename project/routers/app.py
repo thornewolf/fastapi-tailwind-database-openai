@@ -24,7 +24,7 @@ async def index(request: Request):
     """
     App homepage.
     """
-    return templates.TemplateResponse("index.jinja", {"request": request})
+    return templates.TemplateResponse("core/index.jinja", {"request": request})
 
 
 @router.get("/favicon.ico")
@@ -36,7 +36,7 @@ def get_favicon():
 
 @router.get("/demo")
 async def demo(request: Request):
-    return templates.TemplateResponse("demo.jinja", {"request": request})
+    return templates.TemplateResponse("core/demo.jinja", {"request": request})
 
 
 async def startup_function():

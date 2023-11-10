@@ -20,7 +20,7 @@ async def http_exception_handler(
         )
     )
     return templates.TemplateResponse(
-        "404.jinja",
+        "core/404.jinja",
         {"request": request, "detail": detail},
         status_code=exc.status_code,
     )
@@ -34,7 +34,7 @@ def add_middleware(app: fastapi.FastAPI):
     app.add_exception_handler(
         exceptions.NotFoundException,
         lambda r, e: templates.TemplateResponse(
-            "404.jinja",
+            "core/404.jinja",
             {"request": r, "detail": f"{e} :("},
             status_code=404,
         ),

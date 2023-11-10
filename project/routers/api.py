@@ -6,8 +6,6 @@ import project.exceptions as exceptions
 import project.schemas as schemas
 
 router = APIRouter(prefix="/api", tags=["api"])
-functions = APIRouter(prefix="/functions", tags=["api"])
-router.include_router(functions)
 
 
 @router.post("/notify/", summary="Send a notification to the developer")

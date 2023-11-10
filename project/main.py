@@ -1,3 +1,5 @@
+import os
+
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -11,7 +13,9 @@ from fastapi.staticfiles import StaticFiles
 import project.middleware as middleware
 import project.routers.app as frontend
 from project.routers import api, auth
-import os
+
+if os.getenv("ENV") is None:
+    raise Exception("Environment variable ENV is not set. Please ")
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 logging.set_verbosity(logging.INFO)
