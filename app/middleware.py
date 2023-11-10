@@ -4,9 +4,9 @@ import fastapi
 from concurrent.futures import ThreadPoolExecutor
 from starlette.middleware.sessions import SessionMiddleware
 
-import project.exceptions as exceptions
-from project.common import templates
-import project.common as common
+import app.exceptions as exceptions
+from app.common import templates
+import app.common as common
 
 
 async def http_exception_handler(

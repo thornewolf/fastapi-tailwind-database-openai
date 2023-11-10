@@ -16,7 +16,7 @@ css:
 
 # Convert Markdown to Jinja
 post:
-    poetry run python project/tools/publish_posts.py
+    poetry run python app/tools/publish_posts.py
 
 # Publish to Railway
 up: post
@@ -24,7 +24,7 @@ up: post
 
 # Run the app locally
 run:
-    poetry run uvicorn project.main:app --reload
+    poetry run uvicorn app.main:app --reload
 
 # Create an alembic revision. (Follow with `just upgrade`)
 revision message="default message" env="dev":

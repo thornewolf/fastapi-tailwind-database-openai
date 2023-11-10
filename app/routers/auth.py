@@ -5,8 +5,8 @@ from authlib.integrations.starlette_client import OAuth
 from fastapi import APIRouter, Request, Depends
 from fastapi.responses import RedirectResponse
 from starlette.config import Config
-import project.crud as crud
-import project.common as common
+import app.crud as crud
+import app.common as common
 
 config = Config(".env")
 oauth = OAuth(config)

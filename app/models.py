@@ -1,5 +1,5 @@
 # type: ignore
-from project.database import Base
+from app.database import Base
 from pydantic import BaseModel
 from pydantic.dataclasses import dataclass
 from sqlalchemy.orm import relationship

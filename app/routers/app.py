@@ -10,10 +10,10 @@ from fastapi.responses import (
     Response,
 )
 
-import project.common as common
-from project.common import templates
-from project.llm import llm
-from project.routers import blog
+import app.common as common
+from app.common import templates
+from lib.llm import llm
+from app.routers import blog
 
 router = APIRouter()
 router.include_router(blog.router)

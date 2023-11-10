@@ -10,18 +10,18 @@ from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 
-import project.middleware as middleware
-import project.routers.app as frontend
-from project.routers import api, auth
+import app.middleware as middleware
+import app.routers.app as frontend
+from app.routers import api, auth
 
 if os.getenv("ENV") is None:
-    raise Exception("Environment variable ENV is not set. Please ")
+    raise Exception("Environment variable ENV is not set. Please set it to {dev, prod}")
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 logging.set_verbosity(logging.INFO)
 
 app = FastAPI()
-app.mount("/static", StaticFiles(directory="project/static"), name="static")
+app.mount("/static", StaticFiles(directory="app/static"), name="static")
 middleware.add_middleware(app)
 
 app.include_router(auth.router)

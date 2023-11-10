@@ -30,8 +30,8 @@ def annotate_classes_on_html(html_string):
 
 
 def main():
-    # get all markdown files in project/data/blog
-    markdown_files = glob.glob("project/data/blog/*.md")
+    # get all markdown files in app/data/blog
+    markdown_files = glob.glob("app/data/blog/*.md")
     print("Publishing markdown files:")
     print(markdown_files)
 
@@ -43,7 +43,7 @@ def main():
 
         # get the filename without the extension
         file_name = pathlib.Path(path).stem
-        jenv = jinja2.Environment(loader=jinja2.FileSystemLoader("project/templates"))
+        jenv = jinja2.Environment(loader=jinja2.FileSystemLoader("app/templates"))
 
         # Add 'bold' class to all <h1> elements
         modified_html = annotate_classes_on_html(html_string)
@@ -62,7 +62,7 @@ def main():
 
         # Save the modified HTML to a new file or print it
         with open(
-            f"project/templates/blog/generated/{file_name}.jinja", "w", encoding="utf-8"
+            f"app/templates/blog/generated/{file_name}.jinja", "w", encoding="utf-8"
         ) as html_file:
             html_file.write(modified_html)
 

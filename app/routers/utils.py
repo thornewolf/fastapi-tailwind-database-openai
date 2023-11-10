@@ -3,11 +3,11 @@ import time
 import jinja2
 from sqlalchemy.orm import Session
 
-import project.crud as crud
-import project.exceptions as exceptions
-import project.llm as llm
-import project.models as models
-import project.schemas as schemas
+import app.crud as crud
+import app.exceptions as exceptions
+import lib.llm as llm
+import app.models as models
+import app.schemas as schemas
 
 
 def render_template(template: str, **kwargs):

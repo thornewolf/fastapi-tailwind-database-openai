@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 
-  content: ['./**/templates/**/*', './**/static/**/*.js', './**project/**/*.py'],
+  content: ['./**/templates/**/*', './**/static/**/*.js', './**app/**/*.py'],
   daisyui: {
     themes: ["light", "dark", "lofi", "corporate", "retro", "wireframe"],
   },

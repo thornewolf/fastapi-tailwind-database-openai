@@ -6,11 +6,11 @@ from fastapi import APIRouter, Depends, Form, HTTPException, Request, UploadFile
 from fastapi.responses import HTMLResponse, RedirectResponse, StreamingResponse
 from sqlalchemy.orm import Session
 
-import project.common as common
-import project.database as database
-import project.exceptions as exceptions
-import project.models as models
-import project.schemas as schemas
+import app.common as common
+import app.database as database
+import app.exceptions as exceptions
+import app.models as models
+import app.schemas as schemas
 
 models.Base.metadata.create_all(bind=database.engine)
 

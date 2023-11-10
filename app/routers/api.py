@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends
 
-import project.common as common
-import project.crud as crud
-import project.exceptions as exceptions
-import project.schemas as schemas
+import app.common as common
+import app.crud as crud
+import app.exceptions as exceptions
+import app.schemas as schemas
 
 router = APIRouter(prefix="/api", tags=["api"])
 

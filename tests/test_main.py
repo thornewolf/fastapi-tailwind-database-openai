@@ -3,9 +3,9 @@ from unittest.mock import MagicMock
 
 from sqlalchemy.orm import Session
 
-from project import models, main
-import project.schemas as schemas
-from project.crud import create_user
+from app import models, main
+import app.schemas as schemas
+from app.crud import create_user
 
 
 class TestGetOrCreateDbUser(unittest.TestCase):

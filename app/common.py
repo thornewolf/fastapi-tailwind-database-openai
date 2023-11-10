@@ -64,6 +64,6 @@ def write_notification(message=""):
     httpx.post(f"https://ntfy.sh/thornewolf", json={"message": message})
 
 
-templates = Jinja2Templates(directory="project/templates")
+templates = Jinja2Templates(directory="app/templates")
 templates.env.globals["get_flashed_messages"] = get_flashed_messages
 jinja_partials.register_starlette_extensions(templates)

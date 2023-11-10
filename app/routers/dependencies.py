@@ -3,8 +3,8 @@ from typing import Callable, TypeVar
 from fastapi import Depends
 from sqlalchemy.orm import Session
 
-import project.crud as crud
-import project.exceptions as exceptions
+import app.crud as crud
+import app.exceptions as exceptions
 
 T = TypeVar("T")
 
