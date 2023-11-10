@@ -4,14 +4,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-ENV = os.getenv("ENV", "dev")
+ENV = os.getenv("ENV")
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///db.sqlite3")
-
-match ENV:
-    case "prod" | "dev":
-        pass
-    case _:
-        raise ValueError(f'ENV variable must be "prod" or "dev", not "{ENV}"')
 
 if "postgres" in DATABASE_URL:
     if ENV == "dev":

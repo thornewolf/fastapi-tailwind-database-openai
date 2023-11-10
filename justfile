@@ -20,6 +20,7 @@ post:
 
 # Publish to Railway
 up: post
+    just db-sync-and-upgrade prod
     railway up
 
 # Run the app locally
@@ -27,21 +28,24 @@ run:
     poetry run uvicorn app.main:app --reload
 
 # Create an alembic revision. (Follow with `just upgrade`)
-revision message="default message" env="dev":
+db-revision env="dev" message="default message":
     poetry run alembic -x env={{env}} revision -m "{{message}}" --autogenerate
     
 # Upgrade the database to the latest revision
-upgrade env="dev":
+db-upgrade env="dev":
     poetry run alembic -x env={{env}} upgrade head
 
-stamp env="dev":
+# Set the alebic known schema to what is present in the database
+db-stamp env="dev":
     poetry run alembic -x env={{env}} stamp head
 
-# Upgrade all databases to the latest revision
-upgrade-all:
-    just upgrade dev
-    just upgrade prod
+# Sync, calculate diffs in current schema, then upgrade
+db-sync-and-upgrade env="dev":
+    just db-stamp {{env}}
+    just db-revision {{env}} "automatic revision" 
+    just db-upgrade {{env}}
+
 
 # Delete previous revisions
-wipe-versions:
+db-wipe-versions:
      rm -r alembic/versions/*

@@ -4,9 +4,12 @@ from urllib.parse import quote_plus, urlencode
 from authlib.integrations.starlette_client import OAuth
 from fastapi import APIRouter, Request, Depends
 from fastapi.responses import RedirectResponse
+from fastapi.security import APIKeyHeader
+from fastapi.exceptions import HTTPException
 from starlette.config import Config
 import app.crud as crud
 import app.common as common
+import app.exceptions as exceptions
 
 config = Config(".env")
 oauth = OAuth(config)
@@ -21,7 +24,16 @@ auth0 = oauth.register(
 )
 assert auth0
 
-router = APIRouter(prefix="", tags=["auth"])
+api_key_header = APIKeyHeader(name="Authorization")
+
+
+def dep_api_key(api_key_header: str = Depends(api_key_header)):
+    if api_key_header != env.get("API_KEY"):
+        raise HTTPException(status_code=403, detail="Unauthorized")
+    return api_key_header
+
+
+router = APIRouter(prefix="", tags=["authentication"])
 
 
 @router.get("/login")

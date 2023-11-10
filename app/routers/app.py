@@ -13,30 +13,8 @@ from fastapi.responses import (
 import app.common as common
 from app.common import templates
 from lib.llm import llm
-from app.routers import blog
 
-router = APIRouter()
-router.include_router(blog.router)
-
-
-@router.get("/", response_class=HTMLResponse, summary="App homepage")
-async def index(request: Request):
-    """
-    App homepage.
-    """
-    return templates.TemplateResponse("core/index.jinja", {"request": request})
-
-
-@router.get("/favicon.ico")
-def get_favicon():
-    cache_duration = 3600  # For example, 1 hour in seconds
-    headers = {"Cache-Control": f"public, max-age={cache_duration}"}
-    return Response(content=b"", media_type="image/x-icon", headers=headers)
-
-
-@router.get("/demo")
-async def demo(request: Request):
-    return templates.TemplateResponse("core/demo.jinja", {"request": request})
+router = APIRouter(tags=["app"])
 
 
 async def startup_function():
@@ -46,3 +24,11 @@ async def startup_function():
 @router.on_event("startup")
 async def startup():
     asyncio.create_task(startup_function())
+
+
+@router.get("/", response_class=HTMLResponse, summary="App homepage")
+async def index(request: Request):
+    """
+    App homepage.
+    """
+    return templates.TemplateResponse("core/index.jinja", {"request": request})

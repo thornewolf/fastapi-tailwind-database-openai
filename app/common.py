@@ -66,4 +66,7 @@ def write_notification(message=""):
 
 templates = Jinja2Templates(directory="app/templates")
 templates.env.globals["get_flashed_messages"] = get_flashed_messages
+templates.env.globals["ENV"] = os.environ.get("ENV")
+templates.env.globals["ENABLE_TRACKING"] = os.environ.get("ENABLE_TRACKING")
+templates.env.globals["ENABLE_LIT"] = os.environ.get("ENABLE_LIT")
 jinja_partials.register_starlette_extensions(templates)

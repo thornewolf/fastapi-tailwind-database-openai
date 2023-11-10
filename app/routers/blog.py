@@ -21,12 +21,7 @@ async def blog(request: Request):
     )
 
 
-@router.get("/blog-image")
-async def blog_image(request: Request):
-    return FileResponse("app/static/images/blog.png")
-
-
-@router.get("/{slug}", response_class=HTMLResponse, summary="Blog")
+@router.get("/posts/{slug}", response_class=HTMLResponse, summary="Blog")
 async def blog_post(request: Request, slug: str):
     return templates.TemplateResponse(
         f"blog/generated/{slug}.jinja",
