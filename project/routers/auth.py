@@ -36,7 +36,7 @@ async def callback(request: Request, db=Depends(crud.dep_db)):
     request.session["user"] = jwt
     if crud.get_user(db, common.get_sub_from_jwt(jwt)) is None:
         crud.create_user(
-            db, common.get_sub_from_jwt(jwt), email=jwt["userinfo"]["email"]
+            db, user_id=common.get_sub_from_jwt(jwt), email=jwt["userinfo"]["email"]
         )
     return RedirectResponse(request.url_for("index"))
 

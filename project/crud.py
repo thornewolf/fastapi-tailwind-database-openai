@@ -47,7 +47,7 @@ def dep_maybe_user(request: Request, db=Depends(dep_db)):
     return user
 
 
-def create_user(db, user_id: str, email: str = None):
+def create_user(db, *, user_id: str, email: str = None):
     user = models.User(id=user_id, email=email)
     print(f"Creating user {user_id} with email {email}")
     db.add(user)
