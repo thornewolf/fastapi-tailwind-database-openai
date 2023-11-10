@@ -1,6 +1,4 @@
-# Forgot movie tool
-
-<img width="1099" alt="image" src="https://github.com/thornewolf/whats-that-movie/assets/16554266/866cab0f-47e0-480b-820f-fbb3b196e170">
+# Application Template
 
 ## Setup
 
