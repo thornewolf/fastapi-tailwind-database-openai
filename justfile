@@ -2,10 +2,6 @@
 default:
     just --list
 
-setup:
-    git remote add upstream https://github.com/thornewolf/template-oct-2023
-    git pull upstream main
-
 test:
     poetry run coverage run -m unittest discover
     poetry run coverage report
