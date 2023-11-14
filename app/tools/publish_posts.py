@@ -1,4 +1,5 @@
 import glob
+import os
 import pathlib
 
 import commonmark
@@ -65,9 +66,9 @@ def main():
         )
 
         # Save the modified HTML to a new file or print it
-        with open(
-            f"app/templates/blog/generated/{file_name}.jinja", "w", encoding="utf-8"
-        ) as html_file:
+        filename = f"app/templates/blog/generated/{file_name}.jinja"
+        os.makedirs(os.path.dirname(filename), exist_ok=True)
+        with open(filename, "w", encoding="utf-8") as html_file:
             html_file.write(modified_html)
 
     print("Done!")
