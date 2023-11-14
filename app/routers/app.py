@@ -12,7 +12,7 @@ from fastapi.responses import (
 
 import app.common as common
 from app.common import templates
-from lib.llm import llm
+from libs.llm import llm
 
 router = APIRouter(tags=["app"])
 

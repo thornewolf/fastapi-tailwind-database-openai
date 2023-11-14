@@ -1,10 +1,7 @@
-import os
-
 from dotenv import load_dotenv
 
-from app import auth
-
 load_dotenv()
+import os
 
 import openai
 from absl import logging
@@ -14,6 +11,7 @@ from fastapi.staticfiles import StaticFiles
 
 import app.middleware as middleware
 import app.routers.app as frontend
+from app import auth
 from app.routers import api, blog
 
 match os.getenv("ENV"):

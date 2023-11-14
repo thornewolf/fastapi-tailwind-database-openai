@@ -166,3 +166,4 @@ node_modules/
 .DS_Store
 *.db
 app/templates/blog/generated/*
+alembic/versions/*

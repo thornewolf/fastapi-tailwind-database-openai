@@ -38,7 +38,9 @@ router = APIRouter(prefix="", tags=["authentication"])
 
 @router.get("/login")
 async def login(request: Request):
+    print(request)
     redirect_uri = str(request.url_for("callback"))
+    print(f"login redirect_uri: {redirect_uri}")
     return await auth0.authorize_redirect(request, redirect_uri)
 
 

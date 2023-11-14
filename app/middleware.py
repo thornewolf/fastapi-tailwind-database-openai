@@ -40,4 +40,6 @@ def add_middleware(app: fastapi.FastAPI):
         ),
     )
     app.add_exception_handler(404, http_exception_handler)
-    app.add_middleware(SessionMiddleware, secret_key=os.getenv("APP_SECRET_KEY"))
+    app.add_middleware(
+        SessionMiddleware, secret_key=os.getenv("APP_SECRET_KEY", "secret")
+    )

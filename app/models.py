@@ -1,10 +1,12 @@
 # type: ignore
-from app.database import Base
+import uuid
+
 from pydantic import BaseModel
 from pydantic.dataclasses import dataclass
+from sqlalchemy import JSON, Column, DateTime, Enum, Float, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
-from sqlalchemy import Column, Integer, String, ForeignKey, JSON, Float
-import uuid
+
+from app.database import Base
 
 
 def generate_uuid():

@@ -3,12 +3,16 @@ import pathlib
 
 import commonmark
 import jinja2
-from bs4 import BeautifulSoup
 
 
 def annotate_classes_on_html(html_string):
     # Parse the HTML string
-    soup = BeautifulSoup(html_string, "html.parser")
+
+    if False:
+        from bs4 import BeautifulSoup
+
+        soup = BeautifulSoup(html_string, "html.parser")
+        return str(soup)
 
     # Find all <h1> elements and add the 'bold' class to them
     # h1_elements = soup.find_all("h1")
@@ -26,7 +30,7 @@ def annotate_classes_on_html(html_string):
     #     p["class"] = "mt-4 text-gray-700"
 
     # Return the modified HTML
-    return str(soup)
+    return html_string
 
 
 def main():
