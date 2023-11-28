@@ -2,9 +2,9 @@ from dotenv import load_dotenv
 
 load_dotenv()
 import os
+import logging
 
 import openai
-from absl import logging
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse, Response
 from fastapi.staticfiles import StaticFiles
@@ -14,13 +14,12 @@ import app.routers.app as frontend
 from app import auth
 from app.routers import api, blog
 
+
 match os.getenv("ENV"):
     case "prod" | "dev":
         pass
     case other_env:
         raise ValueError(f'ENV variable must be "prod" or "dev", not "{other_env}"')
-
-logging.set_verbosity(logging.DEBUG)
 
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="app/static"), name="static")

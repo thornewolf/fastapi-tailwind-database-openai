@@ -1,15 +1,17 @@
 import os
-from absl import logging
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+import logging
+
+logger = logging.getLogger()
 
 ENV = os.getenv("ENV")
 DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///db.sqlite3")
 
 if "postgres" in DATABASE_URL:
     if ENV == "dev":
-        logging.warning(
+        logger.warn(
             "Using a postgres database while in development mode. Make sure you have configured your environment variables correctly."
         )
     engine = create_engine(DATABASE_URL, pool_size=10, max_overflow=20)
